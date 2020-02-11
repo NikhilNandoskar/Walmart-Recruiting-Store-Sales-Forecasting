@@ -87,8 +87,8 @@ Following are the steps involved in achieving the task.
    
    Training: 
    
-         **R2_score: 0.0815**
-         **Root Mean Squared Error: 21789.2903**
+         R2_score: 0.0815
+         Root Mean Squared Error: 21789.2903
    Testing:
    
          R2_score: 0.0830

@@ -67,6 +67,19 @@ def data_preprocess():
 
   data_frame["IsHoliday"] = data_frame["IsHoliday"].astype(int)  # False = 0, True = 1
   data_frame_test["IsHoliday"] = data_frame_test["IsHoliday"].astype(int)
+   
+  #Weekly Sales vs Stores during Holidays:
+  plotting_data = pd.concat([data_frame['Store'], data_frame['Weekly_Sales'], data_frame['IsHoliday']], axis=1)
+  f, ax = plt.subplots(figsize=(11, 8))
+  fig = sns.boxplot(x='Store', y='Weekly_Sales', data=data_frame, showfliers=False, hue="IsHoliday")
+
+  #Weekly Sales vs Department per Store:
+  mean_sales_data = data_frame['Weekly_Sales'].groupby(data_frame['Dept']).mean()
+  plt.figure(figsize=(20,8))
+  sns.barplot(mean_sales_data.index, mean_sales_data.values)
+  plt.ylabel('Sales', fontsize=16)
+  plt.xlabel('Dept', fontsize=16)
+  plt.show()
 
   from sklearn.preprocessing import LabelEncoder
   le = LabelEncoder()
